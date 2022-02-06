@@ -1,38 +1,38 @@
 export const users = [
   {
-    user: "Meliodas Martino",
+    user: "John Doe",
     image: "https://i.pravatar.cc/300?img=1",
   },
   {
-    user: "Meliodas",
+    user: "Jane Doe",
     image: "https://i.pravatar.cc/300?img=2",
   },
   {
-    user: "Meliodas",
+    user: "Jack Doe",
     image: "https://i.pravatar.cc/300?img=3",
   },
   {
-    user: "Meliodas",
+    user: "Jill Doe",
     image: "https://i.pravatar.cc/300?img=4",
   },
   {
-    user: "Meliodas",
+    user: "Mark Doe",
     image: "https://i.pravatar.cc/300?img=5",
   },
   {
-    user: "Meliodas",
+    user: "Jenny Doe",
     image: "https://i.pravatar.cc/300?img=6",
   },
   {
-    user: "Meliodas",
+    user: "Peter Doe",
     image: "https://i.pravatar.cc/300?img=7",
   },
   {
-    user: "Meliodas",
+    user: "Harry Doe",
     image: "https://i.pravatar.cc/300?img=8",
   },
   {
-    user: "Meliodas",
+    user: "Elena Doe",
     image: "https://i.pravatar.cc/300?img=9",
   },
   {

@@ -5,7 +5,7 @@ import { users } from "../../fakedata/users";
 
 export default function Stories() {
   return (
-    <View style={{ paddingVertical: 5 }}>
+    <View style={{ paddingTop: 5, paddingBottom: 10 }}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {users.map((story, index) => {
           return (
