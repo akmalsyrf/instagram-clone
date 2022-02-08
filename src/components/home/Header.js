@@ -12,7 +12,7 @@ export default function Header() {
         <TouchableOpacity>
           <Image style={styles.icon} source={require("../../assets/add-post.png")} />
         </TouchableOpacity>
-        <TouchableOpacity style={{ alignItems: "center" }}>
+        <TouchableOpacity style={{ alignItems: "center", justifyContent: "center" }}>
           <Image style={styles.icon} source={require("../../assets/Heart-Outline.png")} />
           <View style={styles.notificationDot} />
         </TouchableOpacity>
@@ -20,7 +20,7 @@ export default function Header() {
           <View style={styles.unreadBadge}>
             <Text style={styles.unreadBadgeText}>11</Text>
           </View>
-          <Image style={styles.icon} source={require("../../assets/Direct.png")} />
+          <Image style={styles.icon} source={require("../../assets/messenger.png")} />
         </TouchableOpacity>
       </View>
     </View>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 25,
     height: 25,
-    marginHorizontal: 5,
+    marginStart: 10,
     resizeMode: "contain",
   },
   notificationDot: {
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     height: 5,
     borderRadius: 50,
     bottom: -5,
+    right: 10,
   },
   unreadBadge: {
     backgroundColor: "#ff3250",

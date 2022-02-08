@@ -46,7 +46,7 @@ const PostFooter = ({ post }) => {
   return (
     <View>
       <IconFooter />
-      <Text style={{ color: "white", fontWeight: "bold", marginTop: 5, marginStart: 5 }}>{numberWithCommas(post.likes)} likes</Text>
+      <Text style={{ color: "white", fontWeight: "bold", marginTop: 10, marginStart: 5 }}>{numberWithCommas(post.likes)} likes</Text>
       <Caption post={post} />
       <CommentSection post={post} />
     </View>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   footerIcon: {
     width: 25,
     height: 25,
-    marginHorizontal: 5,
+    marginHorizontal: 10,
     resizeMode: "contain",
   },
 });

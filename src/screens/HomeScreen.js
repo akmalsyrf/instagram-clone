@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView } from "react-native";
 import { View, Text, SafeAreaView, StatusBar, StyleSheet } from "react-native";
+import BottomTabs from "../components/home/BottomTabs";
 import Header from "../components/home/Header";
 import Post from "../components/home/Post";
 import Stories from "../components/home/Stories";
@@ -18,6 +19,7 @@ export default function HomeScreen() {
           return <Post post={post} key={index} />;
         })}
       </ScrollView>
+      <BottomTabs />
     </SafeAreaView>
   );
 }
