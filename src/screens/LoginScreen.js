@@ -2,13 +2,13 @@ import React from "react";
 import { View, Text, StyleSheet, Image, StatusBar } from "react-native";
 import LoginForm from "../components/loginScreen/LoginForm";
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <StatusBar />
       <View style={styles.logoContainer}>
         <Image source={require("../assets/instagram-logo.png")} style={{ width: 100, height: 100 }} />
-        <LoginForm />
+        <LoginForm navigation={navigation} />
       </View>
     </View>
   );
