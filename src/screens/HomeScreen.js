@@ -8,11 +8,11 @@ import Stories from "../components/home/Stories";
 
 import { post } from "../fakedata/posts";
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar />
-      <Header />
+      <Header navigation={navigation} />
       <Stories />
       <ScrollView>
         {post.map((post, index) => {

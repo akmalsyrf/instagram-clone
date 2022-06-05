@@ -1,21 +1,22 @@
+import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import { Image } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { View, Text, StyleSheet } from "react-native";
 import FormikPostUpload from "./FormikPostUpload";
 
-export default function AddNewPost() {
+export default function AddNewPost({ navigation }) {
   return (
     <View style={styles.container}>
-      <Header />
-      <FormikPostUpload />
+      <Header navigation={navigation} />
+      <FormikPostUpload navigation={navigation} />
     </View>
   );
 }
 
-const Header = () => (
+const Header = ({ navigation }) => (
   <View style={styles.headerContainer}>
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.goBack()}>
       <Image source={require("../../assets/Back.png")} style={{ width: 20, height: 20 }} />
     </TouchableOpacity>
     <Text style={styles.headerText}>New Post</Text>

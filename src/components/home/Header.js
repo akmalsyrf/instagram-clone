@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
-export default function Header() {
+export default function Header({ navigation }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity>
@@ -9,7 +9,7 @@ export default function Header() {
       </TouchableOpacity>
 
       <View style={styles.iconsContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.push("NewPostScreen")}>
           <Image style={styles.icon} source={require("../../assets/add-post.png")} />
         </TouchableOpacity>
         <TouchableOpacity style={{ alignItems: "center", justifyContent: "center" }}>

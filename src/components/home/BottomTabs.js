@@ -3,9 +3,6 @@ import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 
 import { users } from "../../fakedata/users";
 
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-const Tab = createBottomTabNavigator();
-
 export default function BottomTabs() {
   const [activeTab, setActiveTab] = React.useState("Home");
 
