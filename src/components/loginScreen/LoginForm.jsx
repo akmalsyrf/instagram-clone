@@ -8,9 +8,10 @@ export default function LoginForm({ navigation }) {
 		email: yup.string().required("An email is required").email(),
 		password: yup.string().required("A password is required").min(6, "Password must be at least 6 characters long"),
 	});
+	const handleSubmit = (values) => {};
 	return (
 		<>
-			<Formik initialValues={{ email: "", password: "" }} onSubmit={(values) => console.log(values)} validationSchema={loginFormSchema} validateOnMount={true}>
+			<Formik initialValues={{ email: "", password: "" }} onSubmit={handleSubmit} validationSchema={loginFormSchema} validateOnMount={true}>
 				{({ handleChange, handleBlur, handleSubmit, values, isValid }) => (
 					<>
 						<View style={styles.wrapper}>

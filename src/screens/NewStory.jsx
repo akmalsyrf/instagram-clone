@@ -41,9 +41,11 @@ export default function App() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		justifyContent: "center",
 	},
 	camera: {
-		flex: 1,
+		width: "100%",
+		height: "80%",
 	},
 	buttonContainer: {
 		flex: 1,

@@ -1,8 +1,15 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { UserContext } from "./src/context/UserContext";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import SignInStack from "./src/screens/navigation";
+import Screens from "./src/screens/navigation";
+
+//check token in localstorage
+(async function checkToken() {
+  if (await AsyncStorage.getItem("@token")) {
+    // setAuthToken(localStorage.token);
+  }
+})()
 
 export default function App() {
-  return <SignInStack />;
+  return <Screens />;
 }

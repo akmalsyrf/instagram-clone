@@ -29,8 +29,10 @@
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-web": "0.17.1",
+    "socket.io-client": "^4.5.1",
     "valid-url": "^1.0.9",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "@react-native-async-storage/async-storage": "~1.15.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

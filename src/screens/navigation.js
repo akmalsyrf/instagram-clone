@@ -26,4 +26,8 @@ const SignInStack = () => (
   </NavigationContainer>
 );
 
+const HomeTabs = () => (
+  <Bottom.Navigator></Bottom.Navigator>
+)
+
 export default SignInStack;
