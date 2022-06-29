@@ -34,6 +34,7 @@ export default function BottomTabs({ state, descriptors, navigation }) {
 
 				return (
 					<TouchableOpacity
+						key={label}
 						accessibilityRole="button"
 						accessibilityState={isFocused ? { selected: true } : {}}
 						accessibilityLabel={options.tabBarAccessibilityLabel}

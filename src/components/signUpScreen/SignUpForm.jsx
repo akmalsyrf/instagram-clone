@@ -83,14 +83,7 @@ export default function SignUpForm({ navigation }) {
 									/>
 								</View>
 							</View>
-							<Button
-								disabled={!isValid}
-								title="Sign Up"
-								onPress={() => {
-									handleSubmit();
-									isValid ? navigation.push("HomeScreen") : null;
-								}}
-							/>
+							<Button disabled={!isValid} title="Sign Up" onPress={() => (isValid ? handleSubmit() : alert("Please check your input again"))} />
 						</View>
 						<View style={styles.signUpContainer}>
 							<Text>Already have an account? </Text>

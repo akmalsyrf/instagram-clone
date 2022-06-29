@@ -31,9 +31,10 @@ export default function LoginForm({ navigation }) {
 				dispatch({ type: "LOGIN_SUCCESS", payload: response.data.data });
 				navigation.navigate("HomeTabs");
 			} else if (response.data.status === "error") {
-				alert("Register Error");
+				alert("Login Error");
 			}
 		} catch (error) {
+			alert("Login Error");
 			console.log(error);
 		}
 	};
@@ -85,14 +86,7 @@ export default function LoginForm({ navigation }) {
 									<Text style={{ color: "#6BB0F5" }}>Forgot password?</Text>
 								</View>
 							</View>
-							<Button
-								disabled={!isValid}
-								title="Log in"
-								onPress={() => {
-									handleSubmit();
-									isValid ? navigation.push("HomeScreen") : null;
-								}}
-							/>
+							<Button disabled={!isValid} title="Log in" onPress={() => (isValid ? handleSubmit() : alert("Please check your input again"))} />
 						</View>
 						<View style={styles.signUpContainer}>
 							<Text>Don't have an account? </Text>
