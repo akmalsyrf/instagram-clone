@@ -1,20 +1,59 @@
+import { useContext } from "react";
 import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
 import Validator from "email-validator";
 
+import { WebView } from "react-native-webview";
+
+import { API } from "../../config/api";
+import { UserContext } from "../../context/UserContext";
+
 export default function LoginForm({ navigation }) {
+	const [state, dispatch] = useContext(UserContext);
+
 	const loginFormSchema = yup.object().shape({
 		email: yup.string().required("An email is required").email(),
 		password: yup.string().required("A password is required").min(6, "Password must be at least 6 characters long"),
 	});
-	const handleSubmit = (values) => {};
+	const handleSubmit = async (values) => {
+		try {
+			const config = {
+				headers: {
+					"Content-type": "application/json",
+				},
+			};
+			const body = JSON.stringify(values);
+			const response = await API.post("/login", body, config);
+			console.log(response.data);
+
+			if (response.data.status === "success") {
+				dispatch({ type: "LOGIN_SUCCESS", payload: response.data.data });
+				navigation.navigate("HomeTabs");
+			} else if (response.data.status === "error") {
+				alert("Register Error");
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const loginWithFacebook = async () => {
+		try {
+			const response = await API.get("/auth/facebook");
+			console.log(response.data.data);
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
 	return (
 		<>
 			<Formik initialValues={{ email: "", password: "" }} onSubmit={handleSubmit} validationSchema={loginFormSchema} validateOnMount={true}>
 				{({ handleChange, handleBlur, handleSubmit, values, isValid }) => (
 					<>
 						<View style={styles.wrapper}>
+							<Button title="Continue with Facebook" onPress={loginWithFacebook} />
+							<Text style={{ alignSelf: "center", marginVertical: 15 }}>or</Text>
 							<View>
 								<View style={[styles.inputField, { borderColor: values.email.length > 1 || Validator.validate(values.email) ? "gray" : "red" }]}>
 									<TextInput

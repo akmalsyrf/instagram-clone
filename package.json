@@ -10,10 +10,12 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/bottom-tabs": "^6.3.1",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/stack": "^6.1.1",
+    "axios": "^0.27.2",
     "email-validator": "^2.0.4",
     "expo": "~44.0.0",
     "expo-camera": "~12.1.2",
@@ -23,6 +25,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
+    "react-native-dotenv": "^3.3.1",
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "~2.1.0",
     "react-native-reanimated": "~2.3.1",
@@ -32,7 +35,7 @@
     "socket.io-client": "^4.5.1",
     "valid-url": "^1.0.9",
     "yup": "^0.32.11",
-    "@react-native-async-storage/async-storage": "~1.15.0"
+    "react-native-webview": "11.15.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

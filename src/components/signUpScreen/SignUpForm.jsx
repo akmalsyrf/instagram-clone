@@ -1,17 +1,45 @@
+import { useContext } from "react";
 import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
 import Validator from "email-validator";
 
+import { API } from "../../config/api";
+import { UserContext } from "../../context/UserContext";
+
 export default function SignUpForm({ navigation }) {
+	const [state, dispatch] = useContext(UserContext);
+
 	const signUpFormSchema = yup.object().shape({
 		email: yup.string().required("An email is required").email(),
 		username: yup.string().required(2, "A username is required"),
 		password: yup.string().required("A password is required").min(6, "Password must be at least 6 characters long"),
 	});
+	const handleSubmit = async (values) => {
+		console.log(values);
+		try {
+			const config = {
+				headers: {
+					"Content-type": "application/json",
+				},
+			};
+			const body = JSON.stringify(values);
+			const response = await API.post("/register", body, config);
+			console.log(response.data);
+
+			if (response.data.status === "success") {
+				dispatch({ type: "LOGIN_SUCCESS", payload: response.data.data });
+				navigation.navigate("HomeTabs");
+			} else if (response.data.status === "error") {
+				alert("Register Error");
+			}
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
 	return (
 		<>
-			<Formik initialValues={{ email: "", password: "", username: "" }} onSubmit={(values) => console.log(values)} validationSchema={signUpFormSchema} validateOnMount={true}>
+			<Formik initialValues={{ email: "", password: "", username: "" }} onSubmit={handleSubmit} validationSchema={signUpFormSchema} validateOnMount={true}>
 				{({ handleChange, handleBlur, handleSubmit, values, isValid }) => (
 					<>
 						<View style={styles.wrapper}>

@@ -9,24 +9,24 @@ import Stories from "../components/home/Stories";
 import { post } from "../fakedata/posts";
 
 export default function HomeScreen({ navigation }) {
-  return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar />
-      <Header navigation={navigation} />
-      <Stories />
-      <ScrollView>
-        {post.map((post, index) => {
-          return <Post post={post} key={index} />;
-        })}
-      </ScrollView>
-      <BottomTabs />
-    </SafeAreaView>
-  );
+	return (
+		<SafeAreaView style={styles.container}>
+			<StatusBar />
+			<Header navigation={navigation} />
+			<Stories />
+			<ScrollView>
+				{post.map((post, index) => {
+					return <Post post={post} key={index} />;
+				})}
+			</ScrollView>
+			{/* <BottomTabs /> */}
+		</SafeAreaView>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "black",
-    flex: 1,
-  },
+	container: {
+		backgroundColor: "black",
+		flex: 1,
+	},
 });
