@@ -42,8 +42,14 @@ export default function LoginForm({ navigation }) {
 	const loginWithFacebook = async () => {
 		try {
 			const response = await API.get("/auth/facebook");
-			console.log(response.data.data);
+			console.log("LOGIN WITH FB", response.data.data);
+			if (response.status == 200) {
+				return <WebView originWhitelist={["*"]} source={{ html: response.data.data }} />;
+			} else {
+				alert("Login with facebook failed");
+			}
 		} catch (error) {
+			alert("Login with facebook failed");
 			console.log(error.message);
 		}
 	};

@@ -32,7 +32,7 @@ const HomeTabs = () => (
     // tabBarIcon: ({ focused, color, size }) => color = "black",
   })}>
     <Bottom.Screen name="HomeScreen" component={HomeScreen} />
-    <Bottom.Screen name="NewStoryScreen" component={NewStoryScreen} />
+    {/* <Bottom.Screen name="NewStoryScreen" component={NewStoryScreen} /> */}
     <Bottom.Screen name="SearchScreen" component={SearchScreen} />
     <Bottom.Screen name="ReelsScreen" component={ReelsScreen} />
     <Bottom.Screen name="ShopScreen" component={ShopScreen} />

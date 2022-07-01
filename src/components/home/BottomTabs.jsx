@@ -1,16 +1,18 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
+import { View, TouchableOpacity, Image, StyleSheet } from "react-native";
 
 import { users } from "../../fakedata/users";
 
 export default function BottomTabs({ state, descriptors, navigation }) {
 	return (
-		<View style={{ flexDirection: "row" }}>
+		<View style={styles.container}>
 			{state.routes.map((route, index) => {
 				const { options } = descriptors[route.key];
 				const label = options.tabBarLabel !== undefined ? options.tabBarLabel : options.title !== undefined ? options.title : route.name;
-
 				const isFocused = state.index === index;
+
+				const image = [require("../../assets/Home.png"), require("../../assets/Search.png"), require("../../assets/Reel.png"), require("../../assets/Shopping.png"), { uri: users[0].image }];
+				const tabStyle = [styles.icon, [styles.icon, { borderRadius: 50, borderColor: "white", borderWidth: label === "ProfileScreen" ? 1 : 0 }]];
 
 				const onPress = () => {
 					const event = navigation.emit({
@@ -32,46 +34,22 @@ export default function BottomTabs({ state, descriptors, navigation }) {
 					});
 				};
 
-				return (
-					<TouchableOpacity
-						key={label}
-						accessibilityRole="button"
-						accessibilityState={isFocused ? { selected: true } : {}}
-						accessibilityLabel={options.tabBarAccessibilityLabel}
-						testID={options.tabBarTestID}
-						onPress={onPress}
-						onLongPress={onLongPress}
-						style={{ flex: 1 }}
-					>
-						<Text style={{ color: isFocused ? "#673ab7" : "#222" }}>{label}</Text>
-					</TouchableOpacity>
-				);
+				return <IconTab key={index} image={image[index]} style={label == "ProfileScreen" ? tabStyle[1] : tabStyle[0]} isFocused={isFocused} options={options} onPress={onPress} onLongPress={onLongPress} />;
 			})}
 		</View>
 	);
 }
-// export default function BottomTabs({ state, descriptors, navigation }) {
-// 	const [activeTab, setActiveTab] = React.useState("Home");
 
-// 	const image = [require("../../assets/Home.png"), require("../../assets/Search.png"), require("../../assets/Reel.png"), require("../../assets/Shopping.png"), { uri: users[0].image }];
-// 	const activeImage = [require("../../assets/Home-Fill.png"), require("../../assets/Search-fill.png")];
-
-// 	const tabStyle = [styles.icon, [styles.icon, { borderRadius: 50, borderColor: "white", borderWidth: activeTab === "Profile" ? 2 : 0 }]];
-// 	return (
-// 		<>
-// 			<View style={styles.container}>
-// 				<IconTab image={activeTab === "Home" ? activeImage[0] : image[0]} style={tabStyle[0]} tabName="Home" setActiveTab={setActiveTab} />
-// 				<IconTab image={activeTab === "Search" ? activeImage[1] : image[1]} style={tabStyle[0]} tabName="Search" setActiveTab={setActiveTab} />
-// 				<IconTab image={image[2]} style={tabStyle[0]} tabName="Reels" setActiveTab={setActiveTab} />
-// 				<IconTab image={image[3]} style={tabStyle[0]} tabName="Shop" setActiveTab={setActiveTab} />
-// 				<IconTab image={image[4]} style={tabStyle[1]} tabName="Profile" setActiveTab={setActiveTab} />
-// 			</View>
-// 		</>
-// 	);
-// }
-
-const IconTab = ({ image, style, tabName, setActiveTab }) => (
-	<TouchableOpacity onPress={() => setActiveTab(tabName)}>
+const IconTab = ({ image, style, onPress, onLongPress, isFocused, options, index }) => (
+	<TouchableOpacity
+		key={index}
+		accessibilityRole="button"
+		accessibilityState={isFocused ? { selected: true } : {}}
+		accessibilityLabel={options.tabBarAccessibilityLabel}
+		testID={options.tabBarTestID}
+		onPress={onPress}
+		onLongPress={onLongPress}
+	>
 		<Image source={image} style={style} />
 	</TouchableOpacity>
 );
@@ -82,7 +60,8 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "space-around",
 		alignItems: "center",
-		marginBottom: 10,
+		paddingBottom: 10,
+		backgroundColor: "black",
 	},
 	icon: {
 		width: 25,

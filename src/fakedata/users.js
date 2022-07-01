@@ -1,11 +1,11 @@
 export const users = [
   {
     user: "John Doe",
-    image: "https://i.pravatar.cc/300?img=1",
+    image: "https://i.pravatar.cc/300?img=2",
   },
   {
     user: "Jane Doe",
-    image: "https://i.pravatar.cc/300?img=2",
+    image: "https://i.pravatar.cc/300?img=1",
   },
   {
     user: "Jack Doe",
