@@ -18,7 +18,7 @@ import ProfileScreen from "./ProfileScreen";
 import SearchScreen from './SearchScreen'
 import ReelsScreen from './ReelsScreen'
 import ShopScreen from './ShopScreen'
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 
 import BottomTabs from "../components/home/BottomTabs";
 const Stack = createStackNavigator();
@@ -73,8 +73,8 @@ const SignInStack = () => {
   useEffect(() => {
     checkUser()
   }, [])
-  useEffect(async () => {
-    console.log(await state);
+  useEffect(() => {
+    console.log(state);
   }, [state])
 
   return initialRoute !== null ? (
@@ -88,7 +88,11 @@ const SignInStack = () => {
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
       </Stack.Navigator>
     </NavigationContainer>
-  ) : <Text style={{ flex: 1, justifyContent: "center", alignContent: "center" }}>Loading ...</Text>
+  ) : (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text style={{ width: '100%' }}>Loading ...</Text>
+    </View>
+  )
 }
 
 export default SignInStack;
